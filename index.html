@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
 :root{
   --ink:#13233b; --ink-soft:#2a3f5f; --slate:#54688a;
@@ -179,6 +180,17 @@ footer .sep{color:var(--line);margin:0 8px}
 }
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
+
+/* ---------- Networks ---------- */
+.net-box{width:100%;position:relative}
+.net-box svg{width:100%;height:100%;display:block;cursor:grab}
+.net-label{font-size:11px;fill:var(--ink-soft);font-weight:500;pointer-events:none}
+.net-label.big{font-size:13px;font-weight:700;fill:var(--ink)}
+.net-legend{display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 14px;font-size:.78rem;color:var(--slate)}
+.net-legend span{display:inline-flex;align-items:center;gap:6px}
+.net-ring{width:12px;height:12px;border-radius:50%;display:inline-block;background:#fff}
+#net-tip{position:fixed;background:#13233b;color:#fff;font-size:.8rem;padding:7px 11px;border-radius:7px;pointer-events:none;opacity:0;transition:opacity .15s;z-index:60;max-width:240px;line-height:1.35}
+#net-tip b{color:#f0d28a}#net-tip i{color:#aebcd0}
 </style>
 </head>
 <body>
@@ -191,6 +203,7 @@ footer .sep{color:var(--line);margin:0 8px}
       <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#impact">Impact</a>
+      <a href="#network">Network</a>
       <a href="#leadership">Leadership</a>
       <a href="#publications">Publications</a>
       <a href="#service">Service</a>
@@ -289,6 +302,25 @@ footer .sep{color:var(--line);margin:0 8px}
       <div class="chart-box"><canvas id="citeChart"></canvas></div>
       <div class="chart-cap">Google Scholar counts · 2004–present · current year is partial</div>
     </div>
+  </div>
+</section>
+
+<!-- ===== NETWORK ===== -->
+<section class="wrap" id="network">
+  <div class="sec-head reveal">
+    <div><span class="eyebrow">Network</span><h2 class="sec-title serif">Collaboration &amp; reach</h2></div>
+    <p class="sec-sub">Two decades of co-authorship, and a career spanning six countries — drag to explore; click a collaborator to open their profile.</p>
+  </div>
+  <div class="panel reveal" style="margin-bottom:22px">
+    <h3 class="serif">Co-authorship</h3>
+    <div class="h3sub">Most frequent collaborators, sized by shared papers; lines link people who published together.</div>
+    <div class="net-legend"><span><span class="net-ring" style="border:2.6px solid #6aa84f"></span>ORCID</span><span><span class="net-ring" style="border:2.6px solid #2c6e7f"></span>Scholar profile</span><span><span class="net-ring" style="border:1.4px solid #c7c7c7"></span>Scholar search</span></div>
+    <div class="net-box" id="net-coauthors" style="height:600px"></div>
+  </div>
+  <div class="panel reveal">
+    <h3 class="serif">Career geography</h3>
+    <div class="h3sub">Institutions across six countries, earliest to latest (clockwise from the top).</div>
+    <div class="net-box" id="net-geography" style="height:540px"></div>
   </div>
 </section>
 
@@ -482,6 +514,61 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // show/hide full positions list
 const posBtn=document.getElementById('posToggle'), posPanel=document.getElementById('allPos');
 if(posBtn){posBtn.addEventListener('click',()=>{const willOpen=posPanel.hidden;posPanel.hidden=!willOpen;posBtn.setAttribute('aria-expanded',String(willOpen));posBtn.textContent=willOpen?'Hide all positions ▴':'Show all positions ▾';});}
+</script>
+<div id="net-tip"></div>
+<script>
+(function(){
+const NDATA={"coauthors": {"nodes": [{"id": "SELF", "label": "M. Asif Khan", "self": true, "val": 24}, {"id": "Tan TW", "label": "Tin Wee Tan", "val": 18, "papers": 18, "url": "https://scholar.google.com/citations?user=S-2B094AAAAJ", "linktype": "Scholar"}, {"id": "Brusic V", "label": "Vladimir Brusic", "val": 16, "papers": 16, "url": "https://orcid.org/0000-0003-0523-5266", "linktype": "ORCID"}, {"id": "August JT", "label": "J. Thomas August", "val": 15, "papers": 15, "url": "https://scholar.google.com/scholar?q=J.%20Thomas%20August", "linktype": "Search"}, {"id": "Chong LC", "label": "Li Chuin Chong", "val": 10, "papers": 10, "url": "https://orcid.org/0000-0002-3574-1365", "linktype": "ORCID"}, {"id": "Srinivasan KN", "label": "K. N. Srinivasan", "val": 8, "papers": 8, "url": "https://scholar.google.com/scholar?q=K.%20N.%20Srinivasan", "linktype": "Search"}, {"id": "Hu Y", "label": "Yongli Hu", "val": 7, "papers": 7, "url": "https://scholar.google.com/scholar?q=Yongli%20Hu", "linktype": "Search"}, {"id": "Miotto O", "label": "Olivo Miotto", "val": 7, "papers": 7, "url": "https://orcid.org/0000-0001-8060-6771", "linktype": "ORCID"}, {"id": "Marques ET", "label": "Ernesto T. A. Marques", "val": 6, "papers": 6, "url": "https://orcid.org/0000-0003-3826-9358", "linktype": "ORCID"}, {"id": "Zhang GL", "label": "Guang Lan Zhang", "val": 6, "papers": 6, "url": "https://scholar.google.com/citations?user=iLRPgD4AAAAJ", "linktype": "Scholar"}, {"id": "Salmon J", "label": "Jerome Salmon", "val": 5, "papers": 5, "url": "https://scholar.google.com/scholar?q=Jerome%20Salmon", "linktype": "Search"}, {"id": "Ranganathan S", "label": "Shoba Ranganathan", "val": 4, "papers": 4, "url": "https://orcid.org/0000-0002-8290-813X", "linktype": "ORCID"}, {"id": "Abd Raman HS", "label": "Hadia Syahirah Abd Raman", "val": 4, "papers": 4, "url": "https://scholar.google.com/citations?user=t175_DcAAAAJ", "linktype": "Scholar"}, {"id": "Manikam R", "label": "Rishya Manikam", "val": 4, "papers": 4, "url": "https://scholar.google.com/citations?user=ycDt2lcAAAAJ", "linktype": "Scholar"}, {"id": "Sekaran SD", "label": "Shamala Devi Sekaran", "val": 4, "papers": 4, "url": "https://orcid.org/0000-0002-0478-0425", "linktype": "ORCID"}, {"id": "Tan PT", "label": "Paul T. J. Tan", "val": 4, "papers": 4, "url": "https://scholar.google.com/scholar?q=Paul%20T.%20J.%20Tan", "linktype": "Search"}, {"id": "Nascimento EJ", "label": "Eduardo J. M. Nascimento", "val": 4, "papers": 4, "url": "https://scholar.google.com/citations?user=qQ4mxH4AAAAJ", "linktype": "Scholar"}, {"id": "Heiny AT", "label": "A. T. Heiny", "val": 4, "papers": 4, "url": "https://scholar.google.com/scholar?q=A.%20T.%20Heiny", "linktype": "Search"}, {"id": "Sjaugi MF", "label": "Muhammad Farhan Sjaugi", "val": 3, "papers": 3, "url": "https://orcid.org/0000-0001-8497-1768", "linktype": "ORCID"}], "links": [{"s": "SELF", "t": "Tan TW", "w": 18}, {"s": "SELF", "t": "Brusic V", "w": 16}, {"s": "SELF", "t": "August JT", "w": 15}, {"s": "SELF", "t": "Chong LC", "w": 10}, {"s": "SELF", "t": "Srinivasan KN", "w": 8}, {"s": "SELF", "t": "Hu Y", "w": 7}, {"s": "SELF", "t": "Miotto O", "w": 7}, {"s": "SELF", "t": "Marques ET", "w": 6}, {"s": "SELF", "t": "Zhang GL", "w": 6}, {"s": "SELF", "t": "Salmon J", "w": 5}, {"s": "SELF", "t": "Ranganathan S", "w": 4}, {"s": "SELF", "t": "Abd Raman HS", "w": 4}, {"s": "SELF", "t": "Manikam R", "w": 4}, {"s": "SELF", "t": "Sekaran SD", "w": 4}, {"s": "SELF", "t": "Tan PT", "w": 4}, {"s": "SELF", "t": "Nascimento EJ", "w": 4}, {"s": "SELF", "t": "Heiny AT", "w": 4}, {"s": "SELF", "t": "Sjaugi MF", "w": 3}, {"s": "Hu Y", "t": "Miotto O", "w": 3}, {"s": "Hu Y", "t": "Sjaugi MF", "w": 1}, {"s": "Miotto O", "t": "Sjaugi MF", "w": 1}, {"s": "Ranganathan S", "t": "Tan TW", "w": 3}, {"s": "Abd Raman HS", "t": "August JT", "w": 2}, {"s": "Manikam R", "t": "Sekaran SD", "w": 3}, {"s": "Abd Raman HS", "t": "Brusic V", "w": 1}, {"s": "Abd Raman HS", "t": "Hu Y", "w": 1}, {"s": "Abd Raman HS", "t": "Miotto O", "w": 1}, {"s": "Abd Raman HS", "t": "Tan TW", "w": 1}, {"s": "Brusic V", "t": "Hu Y", "w": 2}, {"s": "Brusic V", "t": "Miotto O", "w": 6}, {"s": "Brusic V", "t": "Tan TW", "w": 8}, {"s": "Hu Y", "t": "Tan TW", "w": 4}, {"s": "Miotto O", "t": "Tan TW", "w": 6}, {"s": "Abd Raman HS", "t": "Chong LC", "w": 1}, {"s": "Abd Raman HS", "t": "Sjaugi MF", "w": 2}, {"s": "August JT", "t": "Chong LC", "w": 1}, {"s": "August JT", "t": "Sjaugi MF", "w": 1}, {"s": "Chong LC", "t": "Sjaugi MF", "w": 1}, {"s": "August JT", "t": "Hu Y", "w": 3}, {"s": "August JT", "t": "Tan PT", "w": 1}, {"s": "August JT", "t": "Tan TW", "w": 7}, {"s": "Hu Y", "t": "Tan PT", "w": 1}, {"s": "Tan PT", "t": "Tan TW", "w": 1}, {"s": "August JT", "t": "Marques ET", "w": 5}, {"s": "August JT", "t": "Nascimento EJ", "w": 4}, {"s": "Marques ET", "t": "Nascimento EJ", "w": 4}, {"s": "August JT", "t": "Salmon J", "w": 5}, {"s": "Hu Y", "t": "Marques ET", "w": 2}, {"s": "Hu Y", "t": "Salmon J", "w": 2}, {"s": "Marques ET", "t": "Salmon J", "w": 4}, {"s": "Hu Y", "t": "Manikam R", "w": 1}, {"s": "Hu Y", "t": "Sekaran SD", "w": 1}, {"s": "Brusic V", "t": "Tan PT", "w": 3}, {"s": "Marques ET", "t": "Tan TW", "w": 4}, {"s": "August JT", "t": "Brusic V", "w": 10}, {"s": "August JT", "t": "Srinivasan KN", "w": 8}, {"s": "August JT", "t": "Zhang GL", "w": 6}, {"s": "Brusic V", "t": "Srinivasan KN", "w": 8}, {"s": "Brusic V", "t": "Zhang GL", "w": 6}, {"s": "Srinivasan KN", "t": "Zhang GL", "w": 6}, {"s": "August JT", "t": "Heiny AT", "w": 4}, {"s": "Brusic V", "t": "Heiny AT", "w": 4}, {"s": "Heiny AT", "t": "Srinivasan KN", "w": 4}, {"s": "Heiny AT", "t": "Tan TW", "w": 4}, {"s": "Srinivasan KN", "t": "Tan TW", "w": 4}, {"s": "August JT", "t": "Miotto O", "w": 5}, {"s": "Brusic V", "t": "Marques ET", "w": 3}, {"s": "Brusic V", "t": "Nascimento EJ", "w": 3}, {"s": "Brusic V", "t": "Salmon J", "w": 4}, {"s": "Hu Y", "t": "Nascimento EJ", "w": 1}, {"s": "Marques ET", "t": "Miotto O", "w": 3}, {"s": "Miotto O", "t": "Nascimento EJ", "w": 3}, {"s": "Miotto O", "t": "Salmon J", "w": 4}, {"s": "Nascimento EJ", "t": "Salmon J", "w": 3}, {"s": "Nascimento EJ", "t": "Tan TW", "w": 3}, {"s": "Salmon J", "t": "Tan TW", "w": 4}, {"s": "Heiny AT", "t": "Miotto O", "w": 3}, {"s": "Heiny AT", "t": "Zhang GL", "w": 2}, {"s": "Miotto O", "t": "Srinivasan KN", "w": 3}, {"s": "Miotto O", "t": "Zhang GL", "w": 2}, {"s": "Tan TW", "t": "Zhang GL", "w": 2}, {"s": "Heiny AT", "t": "Marques ET", "w": 2}, {"s": "Heiny AT", "t": "Nascimento EJ", "w": 2}, {"s": "Heiny AT", "t": "Salmon J", "w": 2}, {"s": "Marques ET", "t": "Srinivasan KN", "w": 2}, {"s": "Marques ET", "t": "Zhang GL", "w": 1}, {"s": "Nascimento EJ", "t": "Srinivasan KN", "w": 2}, {"s": "Nascimento EJ", "t": "Zhang GL", "w": 1}, {"s": "Salmon J", "t": "Srinivasan KN", "w": 2}, {"s": "Salmon J", "t": "Zhang GL", "w": 1}], "total_unique": 227, "source": "EuropePMC (ORCID 0000-0001-9202-279X)"}, "geography": {"nodes": [{"id": "SELF", "label": "M. Asif Khan", "self": true, "val": 13}, {"id": "NUS", "label": "National University of Singapore (Singapore)", "group": "SG", "val": 7}, {"id": "JHUSG", "label": "Johns Hopkins, Singapore (Singapore)", "group": "SG", "val": 7}, {"id": "I2R", "label": "Institute for Infocomm Research (Singapore)", "group": "SG", "val": 7}, {"id": "JHU", "label": "Johns Hopkins University (USA)", "group": "US", "val": 7}, {"id": "OSAKA", "label": "Osaka University \u2013 IFReC (Japan)", "group": "JP", "val": 7}, {"id": "PERDANA", "label": "Perdana University (Malaysia)", "group": "MY", "val": 7}, {"id": "BVU", "label": "Bezmialem Vak\u0131f University (T\u00fcrkiye)", "group": "TR", "val": 7}, {"id": "UDST", "label": "Univ. of Doha for Science & Technology (Qatar)", "group": "QA", "val": 7}], "links": [{"s": "SELF", "t": "NUS", "w": 3}, {"s": "SELF", "t": "JHUSG", "w": 3}, {"s": "SELF", "t": "I2R", "w": 3}, {"s": "SELF", "t": "JHU", "w": 3}, {"s": "SELF", "t": "OSAKA", "w": 3}, {"s": "SELF", "t": "PERDANA", "w": 3}, {"s": "SELF", "t": "BVU", "w": 3}, {"s": "SELF", "t": "UDST", "w": 3}]}};
+const NC={ink:'#13233b',line:'#e7e0d2'};
+const gc={SG:'#2c6e7f',US:'#b6892f',JP:'#9c4a52',MY:'#2a3f5f',TR:'#5a8f6b',QA:'#8a6d3b'};
+const rc={ORCID:'#6aa84f',Scholar:'#2c6e7f',Search:'#c7c7c7'};
+const tip=document.getElementById('net-tip');
+function gold(max){return v=>d3.interpolateRgb('#d9b96a','#9c6b1f')(Math.min(1,v/max));}
+function R(d){return d.self?Math.sqrt(d.val)*3.4:Math.sqrt(d.val||5)*3;}
+function tipMove(e,d){tip.style.opacity=1;tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY-10)+'px';
+ tip.innerHTML='<b>'+(d.label||d.id)+'</b>'+(d.papers?'<br>'+d.papers+' shared papers':'')+(d.linktype?'<br><i>click → '+d.linktype+'</i>':'');}
+function tipOut(){tip.style.opacity=0;}
+function forceNet(boxId,data){
+ const box=document.getElementById(boxId);const W=box.clientWidth||900,H=box.clientHeight||600;
+ const svg=d3.select(box).append('svg').attr('viewBox',[0,0,W,H]);
+ const links=data.links.map(d=>({source:d.s,target:d.t,w:d.w}));const nodes=data.nodes.map(d=>({...d}));
+ const g=gold(d3.max(nodes.filter(n=>!n.self),n=>n.papers||n.val||5)||10);
+ const sim=d3.forceSimulation(nodes)
+  .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d.source.self||d.target.self?150:70).strength(.4))
+  .force('charge',d3.forceManyBody().strength(-680)).force('center',d3.forceCenter(W/2,H/2))
+  .force('collide',d3.forceCollide().radius(d=>R(d)+20));
+ const link=svg.append('g').attr('stroke',NC.line).attr('stroke-opacity',.55).selectAll('line').data(links).join('line').attr('stroke-width',d=>Math.max(1,Math.sqrt(d.w)));
+ const node=svg.append('g').selectAll('g').data(nodes).join('g').call(drag(sim)).style('cursor',d=>d.url?'pointer':'grab').on('click',(e,d)=>{if(d.url)window.open(d.url,'_blank');});
+ node.append('circle').attr('r',d=>R(d)).attr('fill',d=>d.self?NC.ink:g(d.papers||d.val||5)).attr('stroke',d=>d.self?'#d9b96a':(rc[d.linktype]||'#fff')).attr('stroke-width',d=>d.self?3:(d.linktype!=='Search'?2.6:1.4));
+ const text=node.filter(d=>d.self||(d.papers||0)>=6).append('text').attr('class','net-label big').text(d=>d.label||d.id);
+ node.on('mousemove',tipMove).on('mouseleave',tipOut);
+ sim.on('tick',()=>{nodes.forEach(d=>{const r=R(d)+4;d.x=Math.max(r,Math.min(W-r,d.x));d.y=Math.max(r,Math.min(H-r,d.y));});
+  link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+  node.attr('transform',d=>'translate('+d.x+','+d.y+')');
+  text.attr('text-anchor',d=>d.self?'middle':(d.x>=W/2?'start':'end')).attr('x',d=>d.self?0:(d.x>=W/2?R(d)+7:-(R(d)+7))).attr('y',d=>d.self?R(d)+16:4);});
+ function drag(sim){function s(e,d){if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;}function dr(e,d){d.fx=e.x;d.fy=e.y;}function en(e,d){if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}return d3.drag().on('start',s).on('drag',dr).on('end',en);}
+}
+function ringNet(boxId,data){
+ const box=document.getElementById(boxId);const W=box.clientWidth||900,H=box.clientHeight||540;
+ const PAD=30;const svg=d3.select(box).append('svg').attr('viewBox',[-PAD,-10,W+2*PAD,H+20]);
+ const nodes=data.nodes.map(d=>({...d}));const cx=W/2,cy=H/2,r=Math.min(W,H)*0.30;
+ const leaves=nodes.filter(n=>!n.self);nodes.forEach(n=>{if(n.self){n.x=cx;n.y=cy;}});
+ leaves.forEach((n,i)=>{const a=-Math.PI/2+i/leaves.length*2*Math.PI;n._a=a;n.x=cx+r*Math.cos(a);n.y=cy+r*Math.sin(a);});
+ const byId={};nodes.forEach(n=>byId[n.id]=n);
+ svg.append('g').attr('stroke',NC.line).attr('stroke-opacity',.6).selectAll('line').data(data.links).join('line')
+  .attr('x1',d=>byId[d.s].x).attr('y1',d=>byId[d.s].y).attr('x2',d=>byId[d.t].x).attr('y2',d=>byId[d.t].y).attr('stroke-width',1.4);
+ const node=svg.append('g').selectAll('g').data(nodes).join('g').attr('transform',d=>'translate('+d.x+','+d.y+')').on('mousemove',tipMove).on('mouseleave',tipOut);
+ node.append('circle').attr('r',d=>R(d)).attr('fill',d=>d.self?NC.ink:(gc[d.group]||'#888')).attr('stroke',d=>d.self?'#d9b96a':'#fff').attr('stroke-width',d=>d.self?3:1.5);
+ node.append('text').attr('class','net-label big').text(d=>d.label||d.id).each(function(d){const t=d3.select(this);
+  if(d.self){t.attr('text-anchor','middle').attr('x',0).attr('y',R(d)+18);return;}
+  const c=Math.cos(d._a),s=Math.sin(d._a);
+  if(c>0.35){t.attr('text-anchor','start').attr('x',R(d)+8).attr('y',4);}
+  else if(c<-0.35){t.attr('text-anchor','end').attr('x',-(R(d)+8)).attr('y',4);}
+  else{t.attr('text-anchor','middle').attr('x',0).attr('y',s<0?-(R(d)+12):(R(d)+18));}});
+}
+function init(){forceNet('net-coauthors',NDATA.coauthors);ringNet('net-geography',NDATA.geography);}
+if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
+})();
 </script>
 </body>
 </html>
