@@ -535,10 +535,10 @@ function forceNet(boxId,data){
  const g=gold(d3.max(nodes.filter(n=>!n.self),n=>n.papers||n.val||5)||10);
  nodes.forEach(n=>{if(n.self){n.fx=W/2;n.fy=H/2;}});
  const sim=d3.forceSimulation(nodes)
-  .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d.source.self||d.target.self?185:100).strength(.32))
+  .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d.source.self||d.target.self?215:90).strength(d=>d.source.self||d.target.self?.55:0))
   .force('charge',d3.forceManyBody().strength(-1150)).force('center',d3.forceCenter(W/2,H/2))
   .force('x',d3.forceX(W/2).strength(.06)).force('y',d3.forceY(H/2).strength(.06))
-  .force('collide',d3.forceCollide().radius(d=>R(d)+24));
+  .force('collide',d3.forceCollide().radius(d=>R(d)+30));
  const link=svg.append('g').attr('stroke',NC.line).attr('stroke-opacity',.55).selectAll('line').data(links).join('line').attr('stroke-width',d=>Math.max(1,Math.sqrt(d.w)));
  const node=svg.append('g').selectAll('g').data(nodes).join('g').call(drag(sim)).style('cursor',d=>d.url?'pointer':'grab').on('click',(e,d)=>{if(d.url)window.open(d.url,'_blank');});
  node.append('circle').attr('r',d=>R(d)).attr('fill',d=>d.self?NC.ink:g(d.papers||d.val||5)).attr('stroke',d=>d.self?'#d9b96a':(rc[d.linktype]||'#fff')).attr('stroke-width',d=>d.self?3:(d.linktype!=='Search'?2.6:1.4));
