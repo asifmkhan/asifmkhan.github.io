@@ -181,8 +181,9 @@ section.wrap{padding:30px 28px 22px}
 footer{padding:42px 0 64px;text-align:center;color:var(--slate);font-size:.84rem}
 footer .sep{color:var(--line);margin:0 8px}
 .vc-wrap{position:relative;display:inline-block}
-.vc-badge{appearance:none;-webkit-appearance:none;background:none;border:0;cursor:pointer;color:var(--slate);font:inherit;font-size:.84rem;padding:0;opacity:.75;transition:opacity .15s,color .15s}
-.vc-badge:hover{opacity:1;color:var(--ink)}
+.vc-badge{appearance:none;-webkit-appearance:none;background:none;border:0;cursor:default;color:var(--slate);font:inherit;font-size:.72rem;line-height:1;padding:0 2px 0 12px;opacity:.5;transition:opacity .25s,color .25s;vertical-align:middle}
+.vc-badge:empty{padding:0}
+.vc-badge:hover{opacity:.8;color:var(--gold)}
 .vc-pop{position:absolute;left:50%;bottom:150%;transform:translateX(-50%);min-width:184px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(19,35,59,.16);padding:15px 18px;text-align:center;display:none;z-index:50}
 .vc-pop.open{display:block}
 .vc-pop .n{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ink);line-height:1;font-weight:600}
@@ -511,8 +512,7 @@ footer .sep{color:var(--line);margin:0 8px}
     <span id="footer-asof" class="muted">Metrics from Google Scholar</span>
     <span class="sep">·</span> © <span id="year"></span>
     <span class="vc-wrap">
-      <span class="sep">·</span>
-      <button id="vc-badge" class="vc-badge" hidden aria-label="Site views"></button>
+      <button id="vc-badge" class="vc-badge" aria-label="Site statistics"></button>
       <span id="vc-pop" class="vc-pop" role="dialog" aria-label="Site analytics">
         <span class="n" id="vc-num">—</span>
         <span class="lbl">total views</span><br>
@@ -681,11 +681,10 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
        var c = d.count || d.count_unique || '0';
-       badge.textContent = c+' views';
+       badge.textContent = c;           // bare number only — reads like a footer stamp, not a button
        num.textContent = c;
-       badge.hidden = false;            // reveal only once we have a real number
     })
-    .catch(function(){ /* account not live yet, or public counts disabled → badge stays hidden */ });
+    .catch(function(){ /* account not live yet, or public counts cached as 403 → badge stays empty */ });
 
   badge.addEventListener('click', function(e){ e.stopPropagation(); pop.classList.toggle('open'); });
   pop.addEventListener('click', function(e){ e.stopPropagation(); });
