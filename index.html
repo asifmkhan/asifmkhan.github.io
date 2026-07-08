@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://asifmkhan.github.io/profile.jpg">
 <link rel="canonical" href="https://asifmkhan.github.io/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="keywords" content="Mohammad Asif Khan, Asif M. Khan, bioinformatics, vaccine informatics, pathogen informatics, immunoinformatics, data science, UDST, Professor, Associate Dean">
+<meta name="keywords" content="Mohammad Asif Khan, Asif M. Khan, bioinformatics, vaccine informatics, pathogen informatics, immunoinformatics, data science, UDST, Professor, Associate Dean, DiMA, vDiveR, UNIQmin, AVANA, MULTIPRED, ANTIMIC, T3SEdb, STATdb">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Mohammad Asif Khan", "alternateName": ["Asif M. Khan", "M. Asif Khan", "Khan AM", "Mohammad Asif Khan"], "jobTitle": "Professor and Associate Dean", "worksFor": {"@type": "CollegeOrUniversity", "name": "University of Doha for Science and Technology", "location": "Doha, Qatar"}, "url": "https://asifmkhan.github.io/", "image": "https://asifmkhan.github.io/profile.jpg", "description": "Bioinformatician and data scientist; Professor and Associate Dean at the College of Computing & IT, University of Doha for Science and Technology. Research in vaccine and pathogen informatics, immunoinformatics, disease biomarkers, and bioinformatics education.", "knowsAbout": ["Bioinformatics", "Vaccine informatics", "Pathogen informatics", "Immunoinformatics", "Disease biomarker informatics", "Computational biology", "Data science"], "sameAs": ["https://scholar.google.com/citations?user=gHTr6DoAAAAJ", "https://orcid.org/0000-0001-9202-279X", "https://www.scopus.com/authid/detail.uri?authorId=7404909314", "https://www.researcherid.com/rid/F-4663-2010", "https://www.linkedin.com/in/asifmkhan", "https://loop.frontiersin.org/people/619551/overview"]}</script>
 <!-- /SEO -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,6 +151,12 @@ section.wrap{padding:30px 28px 22px}
 .pub .pmeta .t{font-weight:600;color:var(--ink);font-size:.98rem;line-height:1.35}
 .pub .pmeta .v{font-size:.84rem;color:var(--slate);font-style:italic;margin-top:3px}
 .pub .ptheme{font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-top:6px;display:inline-block}
+.tlinks{margin-top:9px;display:flex;gap:9px;flex-wrap:wrap}
+.tlinks a{font-size:.72rem;font-weight:600;letter-spacing:.02em;text-decoration:none;padding:3px 11px;border-radius:7px;border:1px solid var(--line);color:var(--slate);transition:all .18s}
+.tlinks a.live{color:#1a1303;background:var(--gold-soft);border-color:var(--gold-soft)}
+.tlinks a:hover{border-color:var(--gold);color:var(--gold)}
+.tlinks a.live:hover{background:var(--gold);color:#1a1303}
+.pub .cites.yr{color:var(--gold)}
 
 /* ---------- Service / Editorial ---------- */
 .roles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -242,6 +248,7 @@ footer .sep{color:var(--line);margin:0 8px}
       <a href="#network">Network</a>
       <a href="#leadership">Leadership</a>
       <a href="#publications">Publications</a>
+      <a href="#tools">Tools</a>
       <a href="#speaking">Speaking</a>
       <a href="#service">Service</a>
       <a href="#connect">Connect</a>
@@ -289,6 +296,7 @@ footer .sep{color:var(--line);margin:0 8px}
     <div class="kpi reveal"><div class="top-accent"></div><div class="num" id="m-pubs">90+</div><div class="lbl">Publications</div><div class="sub">peer-reviewed</div></div>
     <div class="kpi reveal"><div class="top-accent"></div><div class="num" id="m-funding">$4.1M</div><div class="lbl">Funding</div><div class="sub" id="m-funding-sub">$2.4M managed</div></div>
     <div class="kpi reveal"><div class="top-accent"></div><div class="num" id="m-grads">17</div><div class="lbl">Graduates</div><div class="sub">to completion</div></div>
+    <div class="kpi reveal"><div class="top-accent"></div><div class="num">100+</div><div class="lbl">Mentored</div><div class="sub">students &amp; researchers</div></div>
     <div class="kpi reveal"><div class="top-accent"></div><div class="num" id="m-patents">3</div><div class="lbl">US Patents</div><div class="sub">granted</div></div>
   </div>
 </div>
@@ -442,6 +450,26 @@ footer .sep{color:var(--line);margin:0 8px}
       <div class="pub"><div class="cites">132<small>cites</small></div><div class="pmeta"><div class="t">Conservation and variability of dengue virus proteins</div><div class="v">PLOS Neglected Tropical Diseases · 2008</div><span class="ptheme">Pathogen &amp; Viral Diversity</span></div></div>
     </div>
     <div style="text-align:center;margin-top:24px"><a class="btn" href="https://scholar.google.com/citations?user=gHTr6DoAAAAJ&hl=en" target="_blank" rel="noopener">View full list on Google Scholar</a></div>
+  </div>
+</section>
+
+<!-- ===== TOOLS & DATABASES ===== -->
+<section class="wrap" id="tools">
+  <div class="sec-head reveal">
+    <div><span class="eyebrow">Tools &amp; Databases</span><h2 class="sec-title serif">Software I have built</h2></div>
+    <p class="sec-sub">A selection from 20+ bioinformatics tools and databases developed since 2003 — spanning viral diversity, immunoinformatics, and specialised biological databases. Each links to its peer-reviewed paper; live tools are marked.</p>
+  </div>
+  <div class="panel reveal">
+    <div class="pubs">
+      <div class="pub"><div class="cites yr">2024<small>tool</small></div><div class="pmeta"><div class="t">DiMA — Diversity Motif Analyser</div><div class="v">Command-line analysis of protein and nucleotide sequence diversity and its motifs.</div><span class="ptheme">Viral Diversity · Flagship</span><span class="tlinks"><a class="live" href="https://github.com/BVU-BILSAB/DiMA" target="_blank" rel="noopener">Live tool ↗</a><a href="https://doi.org/10.1093/bib/bbae607" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2022<small>R pkg</small></div><div class="pmeta"><div class="t">vDiveR</div><div class="v">Visualization of viral protein sequence diversity dynamics; companion to DiMA.</div><span class="ptheme">Viral Diversity</span><span class="tlinks"><a class="live" href="https://cran.r-project.org/package=vDiveR" target="_blank" rel="noopener">Live on CRAN ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2022<small>tool</small></div><div class="pmeta"><div class="t">UNIQmin</div><div class="v">Alignment-free determination of the minimal sequence set capturing a viral peptidome's diversity.</div><span class="ptheme">Viral Diversity</span><span class="tlinks"><a class="live" href="https://pypi.org/project/uniqmin/" target="_blank" rel="noopener">Live on PyPI ↗</a><a href="https://doi.org/10.3390/biology10090853" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2013<small>tool</small></div><div class="pmeta"><div class="t">AVANA — Antigen Variability ANAlyzer</div><div class="v">Genome-scale analysis of antigenic sequence diversity for vaccine target discovery.</div><span class="ptheme">Vaccine Informatics</span><span class="tlinks"><a class="live" href="https://sourceforge.net/projects/avana/" target="_blank" rel="noopener">Live on SourceForge ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2005<small>system</small></div><div class="pmeta"><div class="t">MULTIPRED</div><div class="v">Computational prediction of promiscuous HLA class I and class II binding peptides.</div><span class="ptheme">Immuno-Informatics · ~190 citations</span><span class="tlinks"><a href="https://doi.org/10.1093/nar/gki452" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2004<small>database</small></div><div class="pmeta"><div class="t">ANTIMIC</div><div class="v">Curated database of antimicrobial peptide sequences.</div><span class="ptheme">Databases · ~250 citations</span><span class="tlinks"><a href="https://doi.org/10.1093/nar/gkh032" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2010<small>database</small></div><div class="pmeta"><div class="t">T3SEdb</div><div class="v">Data warehouse of bacterial Type III Secretion System effector proteins.</div><span class="ptheme">Pathogen Informatics</span><span class="tlinks"><a href="https://doi.org/10.1186/1471-2105-11-s7-s4" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+      <div class="pub"><div class="cites yr">2014<small>database</small></div><div class="pmeta"><div class="t">STATdb</div><div class="v">Specialised resource for the STATome — the STAT-family signalling proteins.</div><span class="ptheme">Databases</span><span class="tlinks"><a href="https://doi.org/10.1371/journal.pone.0104597" target="_blank" rel="noopener">Paper ↗</a></span></div></div>
+    </div>
   </div>
 </section>
 
