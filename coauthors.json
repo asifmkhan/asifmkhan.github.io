@@ -49,7 +49,8 @@
    "label": "Yongli Hu",
    "val": 7,
    "papers": 7,
-   "linktype": "None"
+   "linktype": "ORCID",
+   "url": "https://orcid.org/0000-0002-5205-4911"
   },
   {
    "id": "Miotto O",
@@ -263,21 +264,11 @@
   {
    "s": "August JT",
    "t": "Brusic V",
-   "w": 11
-  },
-  {
-   "s": "Brusic V",
-   "t": "Tan TW",
-   "w": 8
+   "w": 10
   },
   {
    "s": "August JT",
    "t": "Srinivasan KN",
-   "w": 8
-  },
-  {
-   "s": "August JT",
-   "t": "Tan TW",
    "w": 8
   },
   {
@@ -287,18 +278,13 @@
   },
   {
    "s": "Brusic V",
-   "t": "Miotto O",
+   "t": "Tan TW",
    "w": 7
   },
   {
    "s": "August JT",
-   "t": "Miotto O",
-   "w": 6
-  },
-  {
-   "s": "August JT",
-   "t": "Salmon J",
-   "w": 6
+   "t": "Tan TW",
+   "w": 7
   },
   {
    "s": "Miotto O",
@@ -312,22 +298,32 @@
   },
   {
    "s": "August JT",
-   "t": "Marques ET",
+   "t": "Heiny AT",
    "w": 5
   },
   {
    "s": "Brusic V",
-   "t": "Salmon J",
+   "t": "Heiny AT",
    "w": 5
   },
   {
-   "s": "Miotto O",
-   "t": "Salmon J",
+   "s": "Heiny AT",
+   "t": "Srinivasan KN",
    "w": 5
   },
   {
-   "s": "Salmon J",
-   "t": "Tan TW",
+   "s": "August JT",
+   "t": "Marques ET",
+   "w": 5
+  },
+  {
+   "s": "August JT",
+   "t": "Miotto O",
+   "w": 5
+  },
+  {
+   "s": "Brusic V",
+   "t": "Miotto O",
    "w": 5
   },
   {
@@ -343,6 +339,11 @@
   {
    "s": "Srinivasan KN",
    "t": "Zhang GL",
+   "w": 5
+  },
+  {
+   "s": "Ranganathan S",
+   "t": "Tan TW",
    "w": 5
   },
   {
@@ -361,21 +362,6 @@
    "w": 4
   },
   {
-   "s": "August JT",
-   "t": "Heiny AT",
-   "w": 4
-  },
-  {
-   "s": "Brusic V",
-   "t": "Heiny AT",
-   "w": 4
-  },
-  {
-   "s": "Heiny AT",
-   "t": "Srinivasan KN",
-   "w": 4
-  },
-  {
    "s": "Heiny AT",
    "t": "Tan TW",
    "w": 4
@@ -386,8 +372,43 @@
    "w": 4
   },
   {
+   "s": "August JT",
+   "t": "Nascimento EJ",
+   "w": 4
+  },
+  {
+   "s": "August JT",
+   "t": "Salmon J",
+   "w": 4
+  },
+  {
+   "s": "Marques ET",
+   "t": "Nascimento EJ",
+   "w": 4
+  },
+  {
    "s": "Marques ET",
    "t": "Salmon J",
+   "w": 4
+  },
+  {
+   "s": "Marques ET",
+   "t": "Tan TW",
+   "w": 4
+  },
+  {
+   "s": "Miotto O",
+   "t": "Salmon J",
+   "w": 4
+  },
+  {
+   "s": "Salmon J",
+   "t": "Tan TW",
+   "w": 4
+  },
+  {
+   "s": "Hu Y",
+   "t": "Tan TW",
    "w": 4
   },
   {
@@ -396,7 +417,17 @@
    "w": 4
   },
   {
-   "s": "Ranganathan S",
+   "s": "Lim KS",
+   "t": "Tan TW",
+   "w": 4
+  },
+  {
+   "s": "Lim SJ",
+   "t": "Tan TW",
+   "w": 4
+  },
+  {
+   "s": "Silva M",
    "t": "Tan TW",
    "w": 4
   },
@@ -404,11 +435,6 @@
    "s": "Koh JL",
    "t": "Tan PT",
    "w": 4
-  },
-  {
-   "s": "August JT",
-   "t": "Nascimento EJ",
-   "w": 3
   },
   {
    "s": "Brusic V",
@@ -421,6 +447,11 @@
    "w": 3
   },
   {
+   "s": "Brusic V",
+   "t": "Salmon J",
+   "w": 3
+  },
+  {
    "s": "Heiny AT",
    "t": "Miotto O",
    "w": 3
@@ -428,16 +459,6 @@
   {
    "s": "Marques ET",
    "t": "Miotto O",
-   "w": 3
-  },
-  {
-   "s": "Marques ET",
-   "t": "Nascimento EJ",
-   "w": 3
-  },
-  {
-   "s": "Marques ET",
-   "t": "Tan TW",
    "w": 3
   },
   {
@@ -458,6 +479,11 @@
   {
    "s": "Nascimento EJ",
    "t": "Tan TW",
+   "w": 3
+  },
+  {
+   "s": "Heiny AT",
+   "t": "Zhang GL",
    "w": 3
   },
   {
@@ -466,23 +492,13 @@
    "w": 3
   },
   {
-   "s": "Lim KS",
-   "t": "Tan TW",
-   "w": 3
-  },
-  {
    "s": "Lim SJ",
    "t": "Silva M",
    "w": 3
   },
   {
-   "s": "Lim SJ",
-   "t": "Tan TW",
-   "w": 3
-  },
-  {
-   "s": "Silva M",
-   "t": "Tan TW",
+   "s": "August JT",
+   "t": "Hu Y",
    "w": 3
   },
   {
@@ -521,11 +537,6 @@
    "w": 2
   },
   {
-   "s": "Heiny AT",
-   "t": "Zhang GL",
-   "w": 2
-  },
-  {
    "s": "Miotto O",
    "t": "Zhang GL",
    "w": 2
@@ -551,11 +562,6 @@
    "w": 2
   },
   {
-   "s": "Hu Y",
-   "t": "Tan TW",
-   "w": 2
-  },
-  {
    "s": "Lim SJ",
    "t": "Ranganathan S",
    "w": 2
@@ -572,12 +578,12 @@
   },
   {
    "s": "August JT",
-   "t": "Hu Y",
+   "t": "Tan PT",
    "w": 2
   },
   {
-   "s": "August JT",
-   "t": "Tan PT",
+   "s": "Hu Y",
+   "t": "Miotto O",
    "w": 2
   },
   {
@@ -618,11 +624,6 @@
   {
    "s": "Brusic V",
    "t": "Hu Y",
-   "w": 1
-  },
-  {
-   "s": "Hu Y",
-   "t": "Miotto O",
    "w": 1
   },
   {
