@@ -752,7 +752,7 @@ function transitLine(boxId,data){
   st.forEach(function(nd){var it=document.createElement("div");it.className="geo-item";
    it.innerHTML='<span class="geo-dot" style="background:'+(gc[nd.group]||"#888")+'"></span><span><b>'+nd.label+'</b> <span class="geo-per">'+nd.country+' · '+nd.period+'</span></span>';
    wrap.appendChild(it);});box.appendChild(wrap);return;}
- function wrapT(s,max){var w=s.split(' '),L=[],cur='';w.forEach(function(word){var t=cur?cur+' '+word:word;if(t.length>max&&cur){L.push(cur);cur=word;}else{cur=t;}});if(cur)L.push(cur);return L;}
+ function wrapT(s,max){var w=s.split(' '),L=[],cur='';w.forEach(function(word){if(word.charAt(0)==='('&&cur){L.push(cur);cur=word;return;}var t=cur?cur+' '+word:word;if(t.length>max&&cur){L.push(cur);cur=word;}else{cur=t;}});if(cur)L.push(cur);return L;}
  const H=360;box.style.height=H+"px";const padX=72,y=Math.round(H*0.5);
  const xs=st.map(function(_,i){return padX+i*(W-2*padX)/(n-1);});
  const svg=d3.select(box).append('svg').attr('viewBox',[0,0,W,H]);
