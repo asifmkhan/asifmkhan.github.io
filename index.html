@@ -320,7 +320,7 @@ footer .sep{color:var(--line);margin:0 8px}
     <div class="awards" style="margin-top:14px">
       <div class="award"><div class="yr">2006–2010</div><div class="txt"><strong>PhD, Bioinformatics</strong> — National University of Singapore.</div></div>
       <div class="award"><div class="yr">2003–2005</div><div class="txt"><strong>MSc, Bioinformatics</strong> — National University of Singapore.</div></div>
-      <div class="award"><div class="yr">1999–2003</div><div class="txt"><strong>B.Appl.Sc. (Hons.), Biotechnology</strong> — National University of Singapore. Minor in Scientific Computation &amp; Multimedia Communication.</div></div>
+      <div class="award"><div class="yr">1999–2003</div><div class="txt"><strong>B.Appl.Sc. (Hons.), Biotechnology</strong>, with a minor in Scientific Computation &amp; Multimedia Communication — National University of Singapore.</div></div>
     </div>
     <div class="reveal" style="margin-top:28px;display:flex;flex-wrap:wrap;gap:16px 48px">
       <div><span class="eyebrow" style="display:block;margin-bottom:6px">Nationality</span><span style="color:var(--ink)">Singaporean</span></div>
@@ -725,7 +725,11 @@ function forceNet(boxId,data){
   link.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
   node.attr('transform',d=>'translate('+d.x+','+d.y+')');
   function sideOf(d){var best=1e9,nx=d.x;nodes.forEach(function(o){if(o===d)return;var dd=(o.x-d.x)*(o.x-d.x)+(o.y-d.y)*(o.y-d.y);if(dd<best){best=dd;nx=o.x;}});return nx>d.x?-1:1;}
-  text.attr('text-anchor',d=>d.self?'middle':(sideOf(d)>0?'start':'end')).attr('x',d=>d.self?d.x:d.x+sideOf(d)*(R(d)+9)).attr('y',d=>d.self?d.y+R(d)+16:d.y+4);});
+  var lbl=[];
+  text.each(function(d){var s=d.self?0:sideOf(d);var w=this.getComputedTextLength?this.getComputedTextLength():((d.label||d.id).length*6.6);var anc=d.self?'middle':(s>0?'start':'end');var x=d.self?d.x:d.x+s*(R(d)+9);var y=d.self?d.y+R(d)+16:d.y+4;var left=anc==='start'?x:(anc==='end'?x-w:x-w/2);d._anc=anc;d._x=x;d._y=y;d._w=w;d._left=left;d._pri=d.self?999:(d.papers||0);lbl.push(d);});
+  lbl.sort(function(a,b){return b._pri-a._pri;});var done=[];
+  lbl.forEach(function(d){var dir=(d.y>=H/2)?1:-1;var t=0;function hit(){return done.some(function(p){var h=(d._left<p._left+p._w+5)&&(p._left<d._left+d._w+5);var v=Math.abs(d._y-p._y)<13;return h&&v;});}while(hit()&&t<16){d._y+=dir*13;t++;}done.push(d);});
+  text.attr('text-anchor',function(d){return d._anc;}).attr('x',function(d){return d._x;}).attr('y',function(d){return d._y;});});
  function drag(sim){function s(e,d){if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;}function dr(e,d){d.fx=e.x;d.fy=e.y;}function en(e,d){if(!e.active)sim.alphaTarget(0);if(!d.self){d.fx=null;d.fy=null;}}return d3.drag().on('start',s).on('drag',dr).on('end',en);}
 }
 function ringNet(boxId,data){
