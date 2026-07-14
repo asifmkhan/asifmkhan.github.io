@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-13",
+  "as_of": "2026-07-14",
   "source": "Google Scholar (https://bit.ly/khanam)",
   "metrics": {
     "citations": 3645,
@@ -120,12 +120,12 @@
     ]
   },
   "selected_works": {
-    "venom-tft": 453,
-    "wes-bigdata": 291,
+    "venom-tft": 455,
+    "wes-bigdata": 296,
     "antimic": 254,
     "flua-conserved": 246,
     "dengue-cytokine": 236,
-    "encyclopedia": 216,
+    "encyclopedia": 218,
     "multipred": 191,
     "dengue-conservation": 132
   }
