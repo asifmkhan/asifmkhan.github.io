@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-07-13",
+  "as_of": "2026-06-20",
   "source": "Google Scholar (https://bit.ly/khanam)",
   "metrics": {
-    "citations": 3645,
-    "citations_since_2021": 1485,
+    "citations": 3630,
+    "citations_since_2021": 1470,
     "hindex": 29,
     "i10": 49,
     "publications": "90+",
@@ -51,18 +51,18 @@
       142,
       158,
       147,
-      169,
-      154,
+      168,
+      155,
       151,
       136,
       168,
       235,
-      290,
-      270,
-      221,
-      295,
-      302,
-      107
+      289,
+      269,
+      219,
+      293,
+      303,
+      97
     ]
   },
   "publications_by_year": {
@@ -118,5 +118,15 @@
       7,
       9
     ]
+  },
+  "selected_works": {
+    "venom-tft": 453,
+    "wes-bigdata": 291,
+    "antimic": 254,
+    "flua-conserved": 246,
+    "dengue-cytokine": 236,
+    "encyclopedia": 216,
+    "multipred": 191,
+    "dengue-conservation": 132
   }
 }

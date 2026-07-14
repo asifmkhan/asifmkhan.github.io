@@ -443,14 +443,14 @@ footer .sep{color:var(--line);margin:0 8px}
   </div>
   <div class="panel reveal">
     <div class="pubs">
-      <div class="pub"><div class="cites">453<small>cites</small></div><div class="pmeta"><div class="t">Molecular evolution and phylogeny of elapid snake venom three-finger toxins</div><div class="v">Journal of Molecular Evolution · 2003</div><span class="ptheme">Venom &amp; Toxin · Zuckerkandl Prize</span></div></div>
-      <div class="pub"><div class="cites">291<small>cites</small></div><div class="pmeta"><div class="t">Advancing personalized medicine through application of whole exome sequencing and big data analytics</div><div class="v">Frontiers in Genetics · 2019</div><span class="ptheme">Reviews &amp; Synthesis</span></div></div>
-      <div class="pub"><div class="cites">254<small>cites</small></div><div class="pmeta"><div class="t">ANTIMIC: a database of antimicrobial sequences</div><div class="v">Nucleic Acids Research · 2004</div><span class="ptheme">Databases &amp; Tools</span></div></div>
-      <div class="pub"><div class="cites">246<small>cites</small></div><div class="pmeta"><div class="t">Evolutionarily conserved protein sequences of influenza A viruses</div><div class="v">PLOS ONE · 2007</div><span class="ptheme">Pathogen &amp; Viral Diversity</span></div></div>
-      <div class="pub"><div class="cites">236<small>cites</small></div><div class="pmeta"><div class="t">Cytokine expression profile of dengue patients at different phases of illness</div><div class="v">PLOS ONE · 2012</div><span class="ptheme">Dengue &amp; Biomarkers</span></div></div>
-      <div class="pub"><div class="cites">216<small>cites</small></div><div class="pmeta"><div class="t">Encyclopedia of Bioinformatics and Computational Biology</div><div class="v">Elsevier · 2018 (Section Editor) · 2nd ed. 2025 (Editor-in-Chief)</div><span class="ptheme">Reference Work</span></div></div>
-      <div class="pub"><div class="cites">191<small>cites</small></div><div class="pmeta"><div class="t">MULTIPRED: prediction of promiscuous HLA binding peptides</div><div class="v">Nucleic Acids Research · 2005</div><span class="ptheme">Immuno-Informatics</span></div></div>
-      <div class="pub"><div class="cites">132<small>cites</small></div><div class="pmeta"><div class="t">Conservation and variability of dengue virus proteins</div><div class="v">PLOS Neglected Tropical Diseases · 2008</div><span class="ptheme">Pathogen &amp; Viral Diversity</span></div></div>
+      <div class="pub"><div class="cites" data-sid="venom-tft">453<small>cites</small></div><div class="pmeta"><div class="t">Molecular evolution and phylogeny of elapid snake venom three-finger toxins</div><div class="v">Journal of Molecular Evolution · 2003</div><span class="ptheme">Venom &amp; Toxin · Zuckerkandl Prize</span></div></div>
+      <div class="pub"><div class="cites" data-sid="wes-bigdata">291<small>cites</small></div><div class="pmeta"><div class="t">Advancing personalized medicine through application of whole exome sequencing and big data analytics</div><div class="v">Frontiers in Genetics · 2019</div><span class="ptheme">Reviews &amp; Synthesis</span></div></div>
+      <div class="pub"><div class="cites" data-sid="antimic">254<small>cites</small></div><div class="pmeta"><div class="t">ANTIMIC: a database of antimicrobial sequences</div><div class="v">Nucleic Acids Research · 2004</div><span class="ptheme">Databases &amp; Tools</span></div></div>
+      <div class="pub"><div class="cites" data-sid="flua-conserved">246<small>cites</small></div><div class="pmeta"><div class="t">Evolutionarily conserved protein sequences of influenza A viruses</div><div class="v">PLOS ONE · 2007</div><span class="ptheme">Pathogen &amp; Viral Diversity</span></div></div>
+      <div class="pub"><div class="cites" data-sid="dengue-cytokine">236<small>cites</small></div><div class="pmeta"><div class="t">Cytokine expression profile of dengue patients at different phases of illness</div><div class="v">PLOS ONE · 2012</div><span class="ptheme">Dengue &amp; Biomarkers</span></div></div>
+      <div class="pub"><div class="cites" data-sid="encyclopedia">216<small>cites</small></div><div class="pmeta"><div class="t">Encyclopedia of Bioinformatics and Computational Biology</div><div class="v">Elsevier · 2018 (Section Editor) · 2nd ed. 2025 (Editor-in-Chief)</div><span class="ptheme">Reference Work</span></div></div>
+      <div class="pub"><div class="cites" data-sid="multipred">191<small>cites</small></div><div class="pmeta"><div class="t">MULTIPRED: prediction of promiscuous HLA binding peptides</div><div class="v">Nucleic Acids Research · 2005</div><span class="ptheme">Immuno-Informatics</span></div></div>
+      <div class="pub"><div class="cites" data-sid="dengue-conservation">132<small>cites</small></div><div class="pmeta"><div class="t">Conservation and variability of dengue virus proteins</div><div class="v">PLOS Neglected Tropical Diseases · 2008</div><span class="ptheme">Pathogen &amp; Viral Diversity</span></div></div>
     </div>
     <div style="text-align:center;margin-top:24px"><a class="btn" href="https://scholar.google.com/citations?user=gHTr6DoAAAAJ&hl=en" target="_blank" rel="noopener">View full list on Google Scholar</a></div>
   </div>
@@ -645,6 +645,7 @@ function render(d){
     document.getElementById('impact-asof').textContent = 'Two decades of output and citation, drawn from Google Scholar (updated '+pretty+').';
     document.getElementById('footer-asof').textContent = 'Metrics from Google Scholar · updated '+pretty;
   }
+  if(d.selected_works){for(var k in d.selected_works){var el=document.querySelector('.cites[data-sid="'+k+'"]');if(el){var sm=el.querySelector('small');el.textContent=String(d.selected_works[k]);if(sm)el.appendChild(sm);}}}
   drawCharts(d);
 }
 
