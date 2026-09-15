@@ -1,9 +1,9 @@
-# siffykhan.github.io
+# asifmkhan.github.io
 
 Personal academic website of **Prof. Mohammad Asif Khan** — Professor & Associate Dean,
 University of Doha for Science & Technology.
 
-Live site: https://siffykhan.github.io
+Live site: https://asifmkhan.github.io
 
 ## Structure
 
