@@ -54,7 +54,20 @@ def norm(s):
 
 def load_existing():
     with open(DATA, encoding="utf-8") as f:
-        return json.load(f)
+        text = f.read()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        # Self-heal a common corruption: a valid object followed by
+        # concatenated "Extra data". Parse only the first object and
+        # rewrite the file clean, so one bad commit can't brick the
+        # weekly job indefinitely.
+        if "Extra data" in str(e):
+            obj, _ = json.JSONDecoder().raw_decode(text)
+            print(f"[warn] {os.path.basename(DATA)} had trailing junk; "
+                  f"recovered the leading JSON object.")
+            return obj
+        raise
 
 
 def fetch():
